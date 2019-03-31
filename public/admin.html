@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/styles.css" />
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+  <title>Archive of Favorite CodePens</title>
+
+</head>
+
+<body>
+
+  <div id="app">
+    <v-app>
+      <v-toolbar>
+        <v-toolbar-title>Admin Page</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-sm-and-down">
+          <v-btn flat onclick="window.location.href = '/';">Archive List</v-btn>
+        </v-toolbar-items>
+      </v-toolbar>
+
+      <div id="admin" class="content">
+        <div class="heading">
+          <h1>Keep track of all your favorite Pens</h1>
+
+
+        </div>
+        <p>Add The ID of your Pens!</br> Example: https://codepen.io/MenSeb/pen/<span style="color: red">mgbpJY</span> </br>Id = mgbpJY (The last part of your link) </p>
+        <div class="add">
+          <div class="form">
+            <v-text-field v-model="id" placeholder="id"></v-text-field>
+            <v-textarea v-model="description" placeholder="Description"></v-textarea>
+            <p></p>
+            <v-btn color="primary" dark @click="upload"> Upload<v-icon dark right>check_circle</v-icon>
+            </v-btn>
+          </div>
+          <div class="upload" v-if="addItem">
+            <h2>{{addItem.id}}</h2>
+            <div class="cp_embed_wrapper"><iframe name="cp_embed_2" :src="addURL" scrolling="no" frameborder="0" height="565" allowtransparency="true" allowfullscreen="true" allowpaymentrequest="true" title="Click and draw some flowers" class="cp_embed_iframe "
+                style="width: 100%; overflow:hidden; display:block;" id="cp_embed_apwMwM"></iframe></div>
+
+          </div>
+        </div>
+      </br>
+        <h2>Edit/Delete an Item</h2>
+        <div class="edit">
+          <div class="form">
+            <v-text-field v-model="findTitle" placeholder="Search"></v-text-field>
+            <div class="suggestions" v-if="suggestions.length > 0">
+              <div class="suggestion" v-for="s in suggestions" @click="selectItem(s)">{{s.id}}
+              </div>
+            </div>
+          </div>
+          <div class="upload" v-if="findItem">
+            <v-text-field v-model="findItem.id"></v-text-field>
+            <v-textarea v-model="findItem.description"></v-textarea>
+            <p></p>
+
+            <div class="cp_embed_wrapper"><iframe name="cp_embed_2" :src="findItemURL" scrolling="no" frameborder="0" height="565" allowtransparency="true" allowfullscreen="true" allowpaymentrequest="true" title="Click and draw some flowers" class="cp_embed_iframe "
+                style="width: 100%; overflow:hidden; display:block;" id="cp_embed_apwMwM"></iframe></div>
+          </div>
+          <div class="actions" v-if="findItem">
+            <v-btn color="error" @click="deleteItem(findItem)">Delete</v-btn>
+            <v-btn color="warning" @click="editItem(findItem)">Edit</v-btn>
+
+          </div>
+        </div>
+      </div>
+    </v-app>
+  </div>
+
+
+
+  <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+  <script src="/admin.js"></script>
+</body>
+
+</html>

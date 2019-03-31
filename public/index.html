@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> -->
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="/styles.css" />
+  <title>CodePens Archive</title>
+</head>
+
+<body>
+
+  <div id="app">
+
+    <v-app dark>
+
+      <v-toolbar>
+        <v-toolbar-title>Archived CodePens</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-sm-and-down">
+          <v-btn  flat  onclick="window.location.href = '/admin.html';">adminPage</v-btn>
+        </v-toolbar-items>
+      </v-toolbar>
+    </br>
+    <div class="text-xs-center">
+    <h1> My Archived Pens </h1>
+  </div>
+
+      <section class="image-gallery">
+
+        <div class="image" v-for="item in items">
+          <h2>{{item.title}}</h2>
+          <h2>Description: {{item.description}}</h2>
+          <div class="cp_embed_wrapper"><iframe name="cp_embed_2" :src="item.url" scrolling="no" frameborder="0" height="565" allowtransparency="true" allowfullscreen="true" allowpaymentrequest="true" title="Click and draw some flowers" class="cp_embed_iframe "
+              style="width: 100%; overflow:hidden; display:block;" id="cp_embed_apwMwM"></iframe></div>
+          <!-- <img :src="item.path" /> -->
+        </div>
+        <div class="footer">
+
+        </div>
+    </v-app>
+  </div>
+
+  <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+  <script src="/script.js"></script>
+</body>
+
+</html>
